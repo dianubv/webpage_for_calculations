@@ -19,6 +19,9 @@ function initialTestEvaluation() {
 
     // Calculate the average of the first three results
     var averageFirstThree = (num1 + num2 + num3) / 3;
+    var averageDiv = document.getElementById("average");
+    averageDiv.style.display = "block";
+    averageDiv.innerHTML = "The average is: " + averageFirstThree.toFixed(2);
 
     // If the average is good, accept the results
     if (averageFirstThree >= testRequirement) {
@@ -50,8 +53,10 @@ function completeTestEvaluation() {
     updateEnteredValuesDisplay();
 
     // Calculate the new average with all six results
-    var total = num1 + num2 + num3 + num4 + num5 + num6;
-    var averageAll = total / 6;
+    var averageAll = (num1 + num2 + num3 + num4 + num5 + num6) / 6;
+    var averageDiv = document.getElementById("average");
+    averageDiv.style.display = "block";
+    averageDiv.innerHTML = "The average is: " + averageAll.toFixed(2);
 
     // Make the final decision based on the new average
     if (averageAll >= testRequirement) {
@@ -63,7 +68,6 @@ function completeTestEvaluation() {
 
 function updateEnteredValuesDisplay() {
     // Update the display of entered values
-    // ... (existing code from updateEnteredValuesDisplay function)
 }
 
 function updateResultDisplay(text, className) {

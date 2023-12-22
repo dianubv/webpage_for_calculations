@@ -1,9 +1,9 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  font-family: 'Arial, sans-serif';
   background: url('calculatrice.jpg') no-repeat center center fixed;
   background-size: auto 100% ;
   margin: 0;
-  height: 100vh; /* Full viewport height */
+  height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,33 +12,33 @@ body {
 
 #title {
   margin-top: 0;
-  padding-top: 20px; /* Adds space at the top of the title */
-  font-size: 2em; /* Makes the title larger */
+  padding-top: 20px; 
+  font-size: 2em; 
 }
 
 .input-columns {
   display: flex;
-  flex-wrap: wrap; /* Responsiveness */
-  gap: 20px; /* Spacing between columns */
+  flex-wrap: wrap; 
+  gap: 20px; 
   justify-content: center;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  min-width: 150px; /* Minimum width for each column */
+  min-width: 150px;
 }
 
 input[type="number"] {
   padding: 10px;
-  margin-bottom: 10px; /* Spacing between inputs */
-  border: 2px solid #ddd; /* Subtle border */
-  border-radius: 4px; /* Rounded corners */
-  font-size: 16px; /* Larger font size for better readability */
+  margin-bottom: 10px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px; 
 }
 
 input[type="number"]:focus {
-  border-color: #007bff; /* Highlight color on focus */
+  border-color: #007bff; 
 }
 
 #content {
@@ -52,17 +52,17 @@ input[type="number"]:focus {
 
 button {
   padding: 10px 20px;
-  background-color: #007bff; /* Bootstrap primary blue */
+  background-color: #007bff; 
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 18px; /* Larger font size */
+  font-size: 18px; 
   transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; 
 }
 
 .result, .goodResult, .retestResult, .rejectResult {
@@ -71,9 +71,9 @@ button:hover {
   padding: 5px;
   border-radius: 5px;
   display: inline-block;
-  margin: 10px 0; /* More spacing around results */
+  margin: 10px 0;
   font-weight: bold;
-  width: auto; /* Auto width based on content */
+  width: auto; 
   transition: transform 0.2s; /* Smooth scaling on hover */
 }
 
@@ -82,13 +82,13 @@ button:hover {
 }
 
 .goodResult {
-  background-color: #28a745; /* Bootstrap success green */
+  background-color: #28a745; 
 }
 
 .retestResult {
-  background-color: #ffc107; /* Bootstrap warning yellow */
+  background-color: #ffc107; 
 }
 
 .rejectResult {
-  background-color: #dc3545; /* Bootstrap danger red */
+  background-color: #dc3545; 
 }
