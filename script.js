@@ -71,3 +71,4 @@ function updateResultDisplay(text, className) {
     resultDiv.textContent = text;
     resultDiv.className = className;
 }
+

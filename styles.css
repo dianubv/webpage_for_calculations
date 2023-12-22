@@ -1,46 +1,94 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  background: url('calculatrice.jpg') no-repeat center center fixed;
+  background-size: cover; /* Cover ensures that the entire viewport is filled */
+  margin: 0;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#title {
+  margin-top: 0;
+  padding-top: 20px; /* Adds space at the top of the title */
+  font-size: 2em; /* Makes the title larger */
+}
+
 .input-columns {
   display: flex;
+  flex-wrap: wrap; /* Responsiveness */
+  gap: 20px; /* Spacing between columns */
+  justify-content: center;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
+  min-width: 150px; /* Minimum width for each column */
 }
 
-body {
-    font-family: 'Arial, sans-serif';
-    background-image: url('calculatrice.jpg');
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
-  
-  #content {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .goodResult, .retestResult, .rejectResult {
-    color: white;
-    font-size: 1.2em;
-    padding: 5px;
-    border-radius: 5px;
-    display: inline-block;
-    margin-right: 10px;
-    font-weight: bold;
-  }
-  
-  .goodResult {
-    background-color: green;
-  }
-  
-  .retestResult {
-    background-color: gold;
-  }
-  
-  .rejectResult {
-    background-color: red;
-  }
-  
+input[type="number"] {
+  padding: 10px;
+  margin-bottom: 10px; /* Spacing between inputs */
+  border: 2px solid #ddd; /* Subtle border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Larger font size for better readability */
+}
+
+input[type="number"]:focus {
+  border-color: #007bff; /* Highlight color on focus */
+}
+
+#content {
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly more opacity */
+  padding: 30px; /* More padding for better spacing */
+  border-radius: 15px; /* More pronounced rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 600px; /* Max width for the content area */
+  width: 100%; /* Full width */
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px; /* Larger font size */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.result, .goodResult, .retestResult, .rejectResult {
+  color: white;
+  font-size: 1.2em;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px 0; /* More spacing around results */
+  font-weight: bold;
+  width: auto; /* Auto width based on content */
+  transition: transform 0.2s; /* Smooth scaling on hover */
+}
+
+.result:hover, .goodResult:hover, .retestResult:hover, .rejectResult:hover {
+  transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+.goodResult {
+  background-color: #28a745; /* Bootstrap success green */
+}
+
+.retestResult {
+  background-color: #ffc107; /* Bootstrap warning yellow */
+}
+
+.rejectResult {
+  background-color: #dc3545; /* Bootstrap danger red */
+}
