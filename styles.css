@@ -1,7 +1,7 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
   background: url('calculatrice.jpg') no-repeat center center fixed;
-  background-size: cover; /* Cover ensures that the entire viewport is filled */
+  background-size: auto 100% ;
   margin: 0;
   height: 100vh; /* Full viewport height */
   display: flex;
