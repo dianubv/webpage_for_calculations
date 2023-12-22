@@ -1,70 +1,73 @@
-var num1, num2, num3, num4, num5, num6, testRequirement;
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('startButton').addEventListener('click', initialTestEvaluation);
+});
 
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('startButton').addEventListener('click', calculateAverage);
-    });
+function initialTestEvaluation() {
+    // Get values from input fields
+    num1 = parseFloat(document.getElementById("num1").value) || 0;
+    num2 = parseFloat(document.getElementById("num2").value) || 0;
+    num3 = parseFloat(document.getElementById("num3").value) || 0;
+    testRequirement = parseFloat(document.getElementById("testRequirement").value) || 0;
 
-    function calculateAverage() {
-      var resultDiv = document.getElementById("result");
-      var enteredValuesDiv = document.getElementById("enteredValues");
-      var num1Display = document.getElementById("num1Display");
-      var num2Display = document.getElementById("num2Display");
-      var num3Display = document.getElementById("num3Display");
-      var num4Display = document.getElementById("num4Display");
-      var num5Display = document.getElementById("num5Display");
-      var num6Display = document.getElementById("num6Display");
-      var testRequirementDisplay = document.getElementById("testRequirementDisplay");
+    updateEnteredValuesDisplay();
 
-    num1 = parseFloat(prompt("Enter first test result: "));
-    num2 = parseFloat(prompt("Enter second test result: "));
-    num3 = parseFloat(prompt("Enter third test result: "));
-    testRequirement = parseFloat(prompt("Enter Test Stated Requirement: "));
-    
-    num1Display.textContent = "First test result: " + num1;
-    num2Display.textContent = "Second test result: " + num2;
-    num3Display.textContent = "Third test result: " + num3;
-    testRequirementDisplay.textContent = "Test Stated Requirement: " + testRequirement;
+    // Immediate rejection if any of the first three results is below 70% of the test requirement
+    if (num1 < testRequirement * 0.7 || num2 < testRequirement * 0.7 || num3 < testRequirement * 0.7) {
+        updateResultDisplay("Reject", 'rejectResult');
+        return;
+    }
 
-    enteredValuesDiv.style.display = "block";
-    
+    // Calculate the average of the first three results
     var averageFirstThree = (num1 + num2 + num3) / 3;
 
-    resultDiv.innerHTML = "Average of first three test results: " + averageFirstThree.toFixed(2);
-
+    // If the average is good, accept the results
     if (averageFirstThree >= testRequirement) {
-        resultDiv.innerHTML += "<br><span class='goodResult'>Good</span>";
-    } else if (averageFirstThree < testRequirement && averageFirstThree > testRequirement * 0.7) {
-        resultDiv.innerHTML += "<br><span class='retestResult'>Retest</span>";
-        promptForAdditionalNumbers();
-    } else {
-        resultDiv.innerHTML += "<br><span class='rejectResult'>Reject</span>";
+        updateResultDisplay("Good", 'goodResult');
+    } 
+    // If the average is between 70% of the requirement and the requirement, prompt for additional tests
+    else if (averageFirstThree >= testRequirement * 0.7) {
+        updateResultDisplay("Retest", 'retestResult');
+        showAdditionalInputs();
     }
-    }
+}
 
-    function promptForAdditionalNumbers() {
-      num4 = parseFloat(prompt("Enter fourth test result: "));
-      num5 = parseFloat(prompt("Enter fifth test result: "));
-      num6 = parseFloat(prompt("Enter sixth test result: "));
-      
-      var num4Display = document.getElementById("num4Display");
-      var num5Display = document.getElementById("num5Display");
-      var num6Display = document.getElementById("num6Display");
-      
-      num4Display.textContent = "Fourth test result: " + num4;
-      num5Display.textContent = "Fifth test result: " + num5;
-      num6Display.textContent = "Sixth test result: " + num6;
+function showAdditionalInputs() {
+    // Show inputs for the second set of tests
+    document.getElementById("num4").style.display = "block";
+    document.getElementById("num5").style.display = "block";
+    document.getElementById("num6").style.display = "block";
+    // Change the event listener to a function that will handle all six tests
+    document.getElementById('startButton').removeEventListener('click', initialTestEvaluation);
+    document.getElementById('startButton').addEventListener('click', completeTestEvaluation);
+}
 
-      // Calculate the average of all entered values
-      var total = num1 + num2 + num3 + num4 + num5 + num6;
+function completeTestEvaluation() {
+    // Get all six test results
+    num4 = parseFloat(document.getElementById("num4").value) || 0;
+    num5 = parseFloat(document.getElementById("num5").value) || 0;
+    num6 = parseFloat(document.getElementById("num6").value) || 0;
+
+    updateEnteredValuesDisplay();
+
+    // Calculate the new average with all six results
+    var total = num1 + num2 + num3 + num4 + num5 + num6;
     var averageAll = total / 6;
-    var resultDiv = document.getElementById("result");
 
-    resultDiv.innerHTML += "<br>Average of all six test results: " + averageAll.toFixed(2);
-
-    // Update the final decision based on the new average
+    // Make the final decision based on the new average
     if (averageAll >= testRequirement) {
-        resultDiv.innerHTML += "<br><span class='goodResult'>Good</span>";
+        updateResultDisplay("Good", 'goodResult');
     } else {
-        resultDiv.innerHTML += "<br><span class='rejectResult'>Reject</span>";
+        updateResultDisplay("Reject", 'rejectResult');
     }
-    }
+}
+
+function updateEnteredValuesDisplay() {
+    // Update the display of entered values
+    // ... (existing code from updateEnteredValuesDisplay function)
+}
+
+function updateResultDisplay(text, className) {
+    var resultDiv = document.getElementById("result");
+    resultDiv.textContent = text;
+    resultDiv.className = className;
+}
